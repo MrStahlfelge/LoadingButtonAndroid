@@ -18,7 +18,6 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatButton;
@@ -26,7 +25,6 @@ import android.util.AttributeSet;
 import android.view.ViewGroup;
 
 import br.com.simplepass.loading_button_lib.R;
-import br.com.simplepass.loading_button_lib.Utils;
 import br.com.simplepass.loading_button_lib.UtilsJava;
 import br.com.simplepass.loading_button_lib.animatedDrawables.CircularAnimatedDrawable;
 import br.com.simplepass.loading_button_lib.animatedDrawables.CircularRevealAnimatedDrawable;
@@ -140,7 +138,7 @@ public class CircularProgressButton extends AppCompatButton implements AnimatedB
             mParams.mSpinningBarWidth = typedArray.getDimension(
                     R.styleable.CircularProgressButton_spinning_bar_width, 10);
             mParams.mSpinningBarColor = typedArray.getColor(R.styleable.CircularProgressButton_spinning_bar_color,
-                    Utils.Companion.getColorWrapper(context, android.R.color.black));
+                    UtilsJava.getColorWrapper(context, android.R.color.black));
             mParams.mPaddingProgress = typedArray.getDimension(R.styleable.CircularProgressButton_spinning_bar_padding, 0);
 
             typedArray.recycle();

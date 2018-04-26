@@ -9,12 +9,21 @@ import android.os.Build;
  */
 
 public class UtilsJava {
-    public static Drawable getDrawable(Context context, int id){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return context.getDrawable(id);
-        } else {
-            return context.getResources().getDrawable(id);
-        }
+	public static Drawable getDrawable(Context context, int id) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			return context.getDrawable(id);
+		} else {
+			return context.getResources().getDrawable(id);
+		}
+	}
 
-    }
+
+	public static int getColorWrapper(Context context, int id) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			return context.getColor(id);
+		} else {
+			return context.getResources().getColor(id);
+		}
+	}
+
 }
