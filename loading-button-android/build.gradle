@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
 //Bintray depends on this global variable to set the library version!
 version = gitVersionName
@@ -119,12 +120,13 @@ if (project.hasProperty('bintrayUser') && project.hasProperty('bintrayKey')) {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    //compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation 'com.android.support:appcompat-v7:27.0.2'
 }
 repositories {
+    mavenLocal()
     mavenCentral()
 }
