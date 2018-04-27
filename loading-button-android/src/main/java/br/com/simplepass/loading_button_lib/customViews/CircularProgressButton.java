@@ -58,6 +58,8 @@ public class CircularProgressButton extends AppCompatButton implements AnimatedB
     private Params mParams;
 
     private boolean doneWhileMorphing;
+    private boolean shouldStartAnimation;
+    private boolean layoutDone;
 
     /**
      *
@@ -259,6 +261,11 @@ public class CircularProgressButton extends AppCompatButton implements AnimatedB
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        layoutDone = true;
+        if (shouldStartAnimation) {
+            startAnimation();
+        }
 
         if (mState == State.PROGRESS && !mIsMorphingInProgress) {
 			drawProgress(canvas);
@@ -478,6 +485,13 @@ public class CircularProgressButton extends AppCompatButton implements AnimatedB
         if(mState != State.IDLE) {
             return;
         }
+
+        if (!layoutDone) {
+            shouldStartAnimation = true;
+            return;
+        }
+
+        shouldStartAnimation = false;
 
         if(mIsMorphingInProgress) {
             mAnimatorSet.cancel();
